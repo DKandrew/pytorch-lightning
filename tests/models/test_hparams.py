@@ -45,7 +45,7 @@ def test_class_nesting(tmpdir):
     A().test()
 
 
-@pytest.mark.xfail(version.parse(sys.version_info) < version.parse('3.8'), reason="ogc only for 3.8")
+@pytest.mark.xfail(sys.version_info >= (3, 8), reason="ogc only for 3.8")
 def test_omegaconf(tmpdir):
     conf = OmegaConf.create({"k": "v", "list": [15.4, {"a": "1", "b": "2"}]})
     model = OmegaConfModel(conf)
